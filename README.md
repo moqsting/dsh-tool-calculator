@@ -55,7 +55,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import { evaluate } from './evaluate.ts'
 
-export const name = '@deepseek-ai/dsh-tool-calculator'
+export const name = 'dsh-tool-calculator'
 export const inject = ['tools']
 
 export function apply(ctx: Context): void {
@@ -98,7 +98,7 @@ export function apply(ctx: Context): void {
 
 本插件已迁移到 DSH 0.1.5-rc.1 依赖线，并在 `local harness 0.1.5-rc.1` 的隔离 consumer 中完成全链路验证：
 
-- **类型/运行时**：`@deepseek-ai/cordis: ^4.0.1` + `@deepseek-ai/dsh-tools: >=0.0.1-rc.1 <0.2.0` + `@deepseek-ai/dsh-invariants: >=0.0.1-rc.1 <0.2.0`（peer）；不再依赖 unscoped `cordis`
+- **类型/运行时**：`@deepseek-ai/cordis: ^4.0.1` + `@deepseek-ai/dsh-tools: >=0.0.1-rc.1 <0.3.0` + `@deepseek-ai/dsh-invariants: >=0.0.1-rc.1 <0.3.0`（peer）；不再依赖 unscoped `cordis`
 - **独立构建**：`npm install`（devDependencies 自包含 typescript/vitest/@types/node）→ `npm run typecheck` → `npm test` → `npm run build` → `npm pack`
 - **消费验证**：tarball 装入 0.1.5-rc.1 consumer → `dsh --profile compat --dump-config` 出现本插件 row → 工具真实注册与执行通过
 - **启动方式**：`npx -p @deepseek-ai/dsh@next dsh web`（lib 生产模式；勿 `install -g` 全局安装）
@@ -155,14 +155,14 @@ dsh run "使用 calculator 工具计算 1+2*3"
 适用于源码贡献（在 monorepo 中开发调试本插件）或仍在使用旧 snapshot 的场景：
 
 1. 放入 monorepo：`cp -r calculator ~/.dsh/source/master/packages/tools/calculator`（开发调试）
-2. `apps/cli/package.json` 加 `"@deepseek-ai/dsh-tool-calculator": "workspace:^"`；`tsconfig.host.json` references 加 `{ "path": "./packages/tools/calculator" }`
+2. `apps/cli/package.json` 加 `"dsh-tool-calculator": "workspace:^"`；`tsconfig.host.json` references 加 `{ "path": "./packages/tools/calculator" }`
 3. `pnpm install && pnpm run build`
 4. 在 profile 用户层 patch 插入插件（`~/.dsh/profiles/<name>/cordis.patch.yml`）：
 
 ```yaml
 - insert:
     - id: tool-calculator
-      name: '@deepseek-ai/dsh-tool-calculator'
+      name: 'dsh-tool-calculator'
 ```
 
 5. 验证：`dsh --profile <name> --dump-config | grep tool-calculator`

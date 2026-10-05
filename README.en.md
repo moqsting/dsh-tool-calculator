@@ -55,7 +55,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import { evaluate } from './evaluate.ts'
 
-export const name = '@deepseek-ai/dsh-tool-calculator'
+export const name = 'dsh-tool-calculator'
 export const inject = ['tools']
 
 export function apply(ctx: Context): void {
@@ -98,7 +98,7 @@ Precedence: `**` (right-associative) > unary `±` > `* / %` > `+ -`.
 
 This plugin has been migrated to the DSH 0.1.5-rc.1 harness and fully verified end-to-end in an isolated consumer of `local harness 0.1.5-rc.1`:
 
-- **Types/runtime**: `@deepseek-ai/cordis: ^4.0.1` + `@deepseek-ai/dsh-tools: >=0.0.1-rc.1 <0.2.0` + `@deepseek-ai/dsh-invariants: >=0.0.1-rc.1 <0.2.0` (peer); no longer depends on unscoped `cordis`
+- **Types/runtime**: `@deepseek-ai/cordis: ^4.0.1` + `@deepseek-ai/dsh-tools: >=0.0.1-rc.1 <0.3.0` + `@deepseek-ai/dsh-invariants: >=0.0.1-rc.1 <0.3.0` (peer); no longer depends on unscoped `cordis`
 - **Standalone build**: `npm install` (devDependencies self-contained: typescript/vitest/@types/node) → `npm run typecheck` → `npm test` → `npm run build` → `npm pack`
 - **Consumption verification**: tarball loaded into a 0.1.5-rc.1 consumer → `dsh --profile compat --dump-config` shows this plugin's row → the tool genuinely registers and executes
 - **Launch method**: `npx -p @deepseek-ai/dsh@next dsh web` (lib production mode; don't `install -g` globally)
@@ -155,14 +155,14 @@ dsh run "使用 calculator 工具计算 1+2*3"
 For source contribution (developing/debugging this plugin in the monorepo) or for scenarios still using old snapshots:
 
 1. Place it in the monorepo: `cp -r calculator ~/.dsh/source/master/packages/tools/calculator` (dev debugging)
-2. Add `"@deepseek-ai/dsh-tool-calculator": "workspace:^"` to `apps/cli/package.json`; add `{ "path": "./packages/tools/calculator" }` to the `tsconfig.host.json` references
+2. Add `"dsh-tool-calculator": "workspace:^"` to `apps/cli/package.json`; add `{ "path": "./packages/tools/calculator" }` to the `tsconfig.host.json` references
 3. `pnpm install && pnpm run build`
 4. Insert the plugin in the profile user-layer patch (`~/.dsh/profiles/<name>/cordis.patch.yml`):
 
 ```yaml
 - insert:
     - id: tool-calculator
-      name: '@deepseek-ai/dsh-tool-calculator'
+      name: 'dsh-tool-calculator'
 ```
 
 5. Verify: `dsh --profile <name> --dump-config | grep tool-calculator`

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@deepseek-ai/dsh-tool-calculator`.
- * @module @deepseek-ai/dsh-tool-calculator/invariant
+ * Package-owned invariant companion for `dsh-tool-calculator`.
+ * @module dsh-tool-calculator/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
 import type { InvariantInstaller } from '@deepseek-ai/dsh-invariants'
 
-const PACKAGE_NAME = '@deepseek-ai/dsh-tool-calculator'
+const PACKAGE_NAME = 'dsh-tool-calculator'
 
 /** Cordis companion plugin name. */
 export const name = 'calculator-invariant'

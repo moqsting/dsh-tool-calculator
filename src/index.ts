@@ -4,14 +4,14 @@
  * 注册 `calculator` 工具：安全的数学表达式求值器。
  * 接入方式：在 cordis.yml 追加：
  *   - id: tool-calculator
- *     name: '@deepseek-ai/dsh-tool-calculator'
+ *     name: 'dsh-tool-calculator'
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import { evaluate } from './evaluate.ts'
 
-export const name = '@deepseek-ai/dsh-tool-calculator'
+export const name = 'dsh-tool-calculator'
 export const inject = ['tools']
 
 export function apply(ctx: Context): void {

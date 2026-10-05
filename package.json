@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-tool-calculator",
+  "name": "dsh-tool-calculator",
   "description": "DSH calculator tool",
   "version": "0.0.1",
   "private": true,
@@ -7,6 +7,10 @@
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moqsting/dsh-tool-calculator.git"
+  },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
   },
@@ -20,8 +24,8 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
-    "@deepseek-ai/dsh-invariants": ">=0.0.1-rc.1 <0.2.0",
-    "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1 <0.2.0"
+    "@deepseek-ai/dsh-invariants": ">=0.0.1-rc.1 <0.3.0",
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1 <0.3.0"
   },
   "dsh": {
     "bundle": {
